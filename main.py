@@ -7,12 +7,11 @@ pygame.init()
 image = pygame.image.load('Narkokorjaja.png')
 screen = pygame.display.set_mode(resolution)
 
-suund = None
 clicked = False
 
 map1 = Map.map1(resolution)
-cop = Cop.Cop(1, 1, resolution, Map.mapn)
-player = Player.Player(1, 1, resolution, Map.mapn)
+cop = Cop.Cop(1, 1, resolution, map1.mapn)
+player = Player.Player(1, 1, resolution, map1.mapn)
 
 while True:
 	for event in pygame.event.get():
@@ -25,17 +24,6 @@ while True:
 				pygame.quit()
 				sys.exit()
 
-		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_RIGHT:
-				suund = 0
-			elif event.key == pygame.K_DOWN:
-				suund = 1
-			elif event.key == pygame.K_LEFT:
-				suund = 2
-			elif event.key == pygame.K_UP:
-				suund = 3
-		else:
-			suund = None
 
 	if clicked == False:
 		screen.fill((255, 255, 255))
@@ -50,15 +38,16 @@ while True:
 
 		if leftclick == (1, 0, 0) and 900 > mouse[0] > 500 and 750 > mouse[1] > 600:
 			clicked = True
+	Keys = pygame.key.get_pressed()
 
 	if clicked == True:
 		screen.fill((255, 255, 255))
-		rects = map1.draw(screen)
-		player_pos = player.move(suund)
-		player.draw(screen, player_pos, rects)
-		cop.draw(screen, map1.path_find(cop.pos(), player_pos, Map.mapn))
+		walls = map1.draw(screen)
+		player_Pos = player.move(-Keys[pygame.K_LEFT]+Keys[pygame.K_RIGHT], Keys[pygame.K_DOWN]-Keys[pygame.K_UP],map1)
+		player.draw(screen, player_Pos)
+		cop.draw(screen, map1.path_find(cop.pos(), player_Pos, map1.mapn))
 
 	#Code here xd 1 876
 
-	pygame.time.wait(0)
+	pygame.time.wait(20)
 	pygame.display.update()
