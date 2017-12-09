@@ -60,5 +60,5 @@ while True:
 
 	#Code here xd 1 876
 
-	pygame.time.wait(60)
+	pygame.time.wait(0)
 	pygame.display.update()
