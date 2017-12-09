@@ -1,0 +1,9 @@
+git clone http:// -link
+
+Kui soovite vaili üles laadida!
+git add --all	või 	git add 'failname.py'
+git commit -m "Comment"
+git push origin master
+
+Kui soovite uusimat faili saada
+git pull origin master
