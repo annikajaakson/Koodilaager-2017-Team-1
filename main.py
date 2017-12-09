@@ -1,4 +1,4 @@
-import pygame, time, sys, math
+import pygame, time, sys, math, Player, Map
 
 resolution = [1440, 900]
 pygame.init()
@@ -12,6 +12,6 @@ while True:
 	screen.fill((0, 0, 0))
 
 	#Code here
-	
+
 	pygame.time.wait(60)
 	pygame.display.update()
