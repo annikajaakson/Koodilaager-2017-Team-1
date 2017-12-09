@@ -1,3 +1,4 @@
+#Nimi
 import pygame, time, sys, math, Player, Map
 
 resolution = [1440, 900]
