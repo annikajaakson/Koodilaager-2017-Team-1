@@ -25,8 +25,8 @@ mapn = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 
 class map1:
 	def __init__(self, resolution):
-		self.x = 20
-		self.y = 18
+		self.x = len(mapn[1])
+		self.y = len(mapn)
 		self.resolution = resolution
 
 	def draw(self, screen):
