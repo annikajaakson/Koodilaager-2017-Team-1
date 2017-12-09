@@ -20,9 +20,9 @@ while True:
                 sys.exit()
     screen.fill((255, 255, 255))
     screen.blit(image, (282, 120))
-    player.draw(screen, player.move(0))
+    rects = map1.draw(screen)
+    player.draw(screen, player.move(0), rects)
     pygame.draw.rect(screen, [0, 255, 0], (500, 600, 400, 150))
-    map1.draw(screen)
     #Code here xd 1 876
 
     pygame.time.wait(60)
