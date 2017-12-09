@@ -1,6 +1,6 @@
 #Mingi Pede aka Mihkel XD
 import pygame, time, sys, math
-import Player, Map
+import Player, Map, Cop
 
 resolution = [1400, 900]
 pygame.init()
@@ -9,7 +9,8 @@ screen = pygame.display.set_mode(resolution)
 suund = None
 clicked = False
 map1 = Map.map1(resolution)
-player = Player.Player(10, 10, 5)
+cop = Cop.Cop(1, 1, resolution)
+player = Player.Player(1, 1, resolution)
 while True:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
@@ -44,9 +45,11 @@ while True:
 	if clicked == True:
 		screen.fill((255, 255, 255))
 		rects = map1.draw(screen)
-		player.draw(screen, player.move(suund), rects)
+		player_pos = player.move(suund)
+		player.draw(screen, player_pos, rects)
+		cop.draw(screen, map1.path_find(cop.pos(), player_pos, Map.mapn))
 
 	#Code here xd 1 876
 
-	pygame.time.wait(0)
+	pygame.time.wait(60)
 	pygame.display.update()
