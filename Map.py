@@ -1,5 +1,5 @@
 #Raiko
-
+import pygame, math
 
 map = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
        1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
@@ -19,4 +19,13 @@ map = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
        1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
        1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,]
-
+class map1:
+    def __init__(self, resolutsion):
+        self.x = 20
+        self.y = 18
+        self.resolutsion = resolutsion
+    def draw(self, screen):
+        for i in range(map):
+            width = resolution[0]/self.x
+            height = resolution[1]/self.y
+            pygame.draw.rect(screen, (0, 0, 255), (math.floor(resolution[0]/i)*width, resolution[1]%i, width, height))
