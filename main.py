@@ -1,4 +1,4 @@
-#Mingi Pede aka Mihkel
+#Mingi Pede aka Mihkel XD
 import pygame, time, sys, math
 import Player, Map
 
