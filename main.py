@@ -21,7 +21,7 @@ while True:
     screen.blit(image, (282, 120))
     player.draw(screen, player.move(0))
     pygame.draw.rect(screen, [0, 255, 0], (500, 600, 400, 150))
-    #Code here xd 1
+    #Code here xd 1 876
 
     pygame.time.wait(60)
     pygame.display.update()
