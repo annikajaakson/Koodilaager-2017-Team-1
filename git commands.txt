@@ -7,3 +7,24 @@ git push origin master
 
 Kui soovite uusimat faili saada
 git pull origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xd
