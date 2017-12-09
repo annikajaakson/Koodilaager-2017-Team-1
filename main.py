@@ -17,7 +17,7 @@ while True:
 				sys.exit()
 	screen.fill((0, 0, 0))
     screen.blit(image, [0, 0])
-	#Code here
+	#Code here xd
 
 	pygame.time.wait(60)
 	pygame.display.update()
