@@ -1,9 +1,9 @@
 #Mingi Pede aka Mihkel
 import pygame, time, sys, math, Player, Map
 
-resolution = [1440, 900]
+resolution = [1400, 900]
 pygame.init()
-image = pygame.image.load('Narkokorjajad.png-')
+image = pygame.image.load('Narkokorjajad.png')
 screen = pygame.display.set_mode(resolution)
 
 while True:
@@ -21,3 +21,5 @@ while True:
 
 	pygame.time.wait(60)
 	pygame.display.update()
+
+
