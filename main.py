@@ -18,11 +18,15 @@ while True:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()
+    #rects = map1.draw(screen)
     screen.fill((255, 255, 255))
     screen.blit(image, (282, 120))
-    rects = map1.draw(screen)
-    player.draw(screen, player.move(0), rects)
-    pygame.draw.rect(screen, [0, 255, 0], (500, 600, 400, 150))
+    #player.draw(screen, player.move(0), rects)
+    mouse = pygame.mouse.get_pos()
+    if 900 > mouse[0] > 500 and 750 > mouse[1] > 600:
+        pygame.draw.rect(screen, [0, 255, 0], (500, 600, 400, 150))
+    else:
+        pygame.draw.rect(screen, [0, 200, 0], (500, 600, 400, 150))
     #Code here xd 1 876
 
     pygame.time.wait(60)
