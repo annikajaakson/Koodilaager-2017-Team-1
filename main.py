@@ -1,4 +1,4 @@
-#Nimi
+#Mingi Pede aka Mihkel
 import pygame, time, sys, math, Player, Map
 
 resolution = [1440, 900]
