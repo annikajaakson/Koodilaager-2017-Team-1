@@ -1,15 +1,13 @@
-#Karu
-
-import pygame, time, math, main
-
-x = 10
-y = 10
+import pygame
 
 class Player:
     def __init__ (self, x, y, kiirus):
         self.x = x
         self.y = y
         self.kiirus = kiirus
+
+    def draw(self, screen, pos):
+        pygame.draw.rect (screen, [0, 0, 0],(pos[0], pos[1], 10, 10))
 
     def move(self, suund):
         if suund == 0:
@@ -20,6 +18,6 @@ class Player:
             self.y += self.kiirus
         elif suund == 3:
             self.y -= self.kiirus
-pygame.draw.rect (screen, [0, 0, 0],(x, y, 10, 10))
+        return [self.x, self.y]
 
 
