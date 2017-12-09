@@ -30,7 +30,4 @@ class map1:
             width = self.resolution[0]/self.x
             height = self.resolution[1]/self.y
             if mapn[i] == 1:
-            	if i == 0:
-            		pygame.draw.rect(screen, (0, 0, 255), (0, 0, width, height))
-            	else:
-            		pygame.draw.rect(screen, (0, 0, 255), (i%self.x*width, math.floor(i/(self.y+2))*height, self.resolution[0]/self.x, self.resolution[1]/self.y))
+            	pygame.draw.rect(screen, (0, 0, 255), (i%self.x*width, math.floor(i/(self.y+2))*height, self.resolution[0]/self.x, self.resolution[1]/self.y))
