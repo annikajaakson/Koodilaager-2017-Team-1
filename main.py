@@ -3,6 +3,7 @@ import pygame, time, sys, math, Player, Map
 
 resolution = [1440, 900]
 pygame.init()
+image = pygame.image.load('Narkokorjajad.png-')
 screen = pygame.display.set_mode(resolution)
 
 while True:
@@ -15,7 +16,7 @@ while True:
 				pygame.quit()
 				sys.exit()
 	screen.fill((0, 0, 0))
-
+    screen.blit(image, [0, 0])
 	#Code here
 
 	pygame.time.wait(60)
