@@ -1,7 +1,7 @@
 #Raiko
 import pygame, math
 
-map = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+mapn = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
        1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
        1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
        1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
@@ -18,14 +18,19 @@ map = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
        1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
        1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
        1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
-       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,]
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
 class map1:
-    def __init__(self, resolutsion):
+    def __init__(self, resolution):
         self.x = 20
         self.y = 18
-        self.resolutsion = resolutsion
+        self.resolution = resolution
     def draw(self, screen):
-        for i in range(map):
-            width = resolution[0]/self.x
-            height = resolution[1]/self.y
-            pygame.draw.rect(screen, (0, 0, 255), (math.floor(resolution[0]/i)*width, resolution[1]%i, width, height))
+        for i in range(len(mapn)):
+            width = self.resolution[0]/self.x
+            height = self.resolution[1]/self.y
+            if mapn[i] == 1:
+            	if i == 0:
+            		pygame.draw.rect(screen, (0, 0, 255), (0, 0, width, height))
+            	else:
+            		pygame.draw.rect(screen, (0, 0, 255), (i%self.x*width, math.floor(i/(self.y+2))*height, self.resolution[0]/self.x, self.resolution[1]/self.y))
