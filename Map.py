@@ -46,12 +46,18 @@ class map1:
             pygame.draw.rect(screen, (160, 95, 49), i)
         return self.walls
 
-    def path_find(self, cop, player):
+    def path_find(self, start, end):
         grid = Grid(matrix=self.mapn)
 
-        start = grid.node(cop[0], cop[1])
-        end = grid.node(player[0], player[1])
+        start_node = grid.node(start[0], start[1])
+        end_node = grid.node(end[0], end[1])
 
-        path, runs = AStarFinder(diagonal_movement=DiagonalMovement.never).find_path(start, end, grid)  
+        path, runs = AStarFinder(diagonal_movement=DiagonalMovement.never).find_path(start_node, end_node, grid)
         return path 
 
+    def random_pos(self):
+        pos = [randint(0, self.x-1), randint(0, self.y-1)]
+        while self.mapn[pos[1]][pos[0]] == 0:
+            pos = [randint(0, self.x), randint(0, self.y)]
+
+        return pos

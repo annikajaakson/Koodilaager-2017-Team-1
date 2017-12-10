@@ -8,7 +8,7 @@ clicked = False
 narcotypes = {2:['LSD', (255, 255, 0)], 3:['Mushroom', (0, 255, 255)]}
 
 map1 = Map.map1(resolution, narcotypes)
-cops_list = [Cop.Cop(1, 1, resolution, map1.mapn)]
+cops_list = [Cop.Cop(1, 1, resolution, map1)]
 player = Player.Player(1, 1, resolution, map1.mapn)
 
 
