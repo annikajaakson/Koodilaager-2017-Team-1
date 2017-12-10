@@ -5,7 +5,7 @@ import Player, Map, Cop, Narko
 resolution = [1400, 900]
 fps_cap = 30
 clicked = False
-narcotypes = {2:['LSD', (255, 255, 0)], 3:['Mushroom', (0, 255, 255)]}
+narcotypes = {2:['Weed', (255, 255, 0)], 3:['Mushroom', (0, 255, 255)], 4:['Syringe', (255, 255, 0)]}
 score = 0
 
 map1 = Map.map1(resolution, narcotypes)

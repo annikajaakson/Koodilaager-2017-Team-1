@@ -60,7 +60,7 @@ class map1:
             for j in i:
                 if j == "1":
                     if randint(0, 100) == 0:
-                        j = randint(2, 3)
+                        j = randint(2, len(self.narcotypes)+1)
                 a += str(j) + ","
 
             exec("self.mapn.append(%s)" % (a[0:-1] + "]"))

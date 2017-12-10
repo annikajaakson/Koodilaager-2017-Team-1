@@ -1,7 +1,7 @@
 #Jako
 import pygame
 
-cop_img = pygame.image.load("copdown.png")
+cop_img = pygame.image.load("copdown1.png")
 class Cop:
     def __init__(self, x, y, resolution, map):
         self.x = x
