@@ -17,13 +17,13 @@ class Player:
 	def draw(self, screen, pos, rotx, roty):
 		roty = roty*2
 		if rotx:
-			screen.blit(rotation[rotx], (pos[0]*self.width, pos[1]*self.height))
+			screen.blit(rotation[rotx], (pos[0]*self.width-20, pos[1]*self.height))
 			self.last = rotx
 		elif roty:
-			screen.blit(rotation[roty], (pos[0]*self.width, pos[1]*self.height))
+			screen.blit(rotation[roty], (pos[0]*self.width-20, pos[1]*self.height))
 			self.last = roty
 		else:
-			screen.blit(rotation[self.last], (pos[0]*self.width, pos[1]*self.height))
+			screen.blit(rotation[self.last], (pos[0]*self.width-20, pos[1]*self.height))
 		#player = pygame.Rect((0, 0, self.width, self.height))
 		#pygame.draw.rect(screen, [0, 0, 0], player)
 
