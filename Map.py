@@ -8,24 +8,15 @@ from pathfinding.finder.a_star import AStarFinder
 class map1:
     def __init__(self, resolution, narcotypes):
         self.resolution = resolution
-        self.mapn = []
         self.narko = []
+        self.narcotypes = narcotypes
 
-        fail = open("image.txt").read().split("\n")
-        for i in fail:
-            a = "["
-            for j in i:
-                if j == "1":
-                    if randint(0, 10) == 0:
-                        j = randint(2, 3)
-                a += str(j) + ","
-
-            exec("self.mapn.append(%s)" % (a[0:-1] + "]"))
+        map1.get_map(self)
 
         self.x = len(self.mapn[1])
         self.y = len(self.mapn)
-        width = self.resolution[0] / self.x
-        height = self.resolution[1] / self.y
+        self.width = self.resolution[0] / self.x
+        self.height = self.resolution[1] / self.y
 
         self.walls = []
         self.outer_walls = [pygame.Rect([0, -200, self.resolution[0], 200]),
@@ -36,9 +27,7 @@ class map1:
         for i in range(len(self.mapn)):
             for j in range(len(self.mapn[i])):
                 if self.mapn[i][j] == 0:
-                    self.walls.append(pygame.Rect((j*width, i*height, width, height)))
-                if self.mapn[i][j] >= 2:
-                    self.narko.append([pygame.Rect(j*width, i*height, width, height), narcotypes[self.mapn[i][j]][0], narcotypes[self.mapn[i][j]][1]])
+                    self.walls.append(pygame.Rect((j*self.width, i*self.height, self.width, self.height)))
 
 
     def draw(self, screen):
@@ -57,7 +46,28 @@ class map1:
 
     def random_pos(self):
         pos = [randint(0, self.x-1), randint(0, self.y-1)]
+
         while self.mapn[pos[1]][pos[0]] == 0:
-            pos = [randint(0, self.x), randint(0, self.y)]
+            pos = [randint(0, self.x-1), randint(0, self.y-1)]
 
         return pos
+
+    def get_map(self):
+        fail = open("image.txt").read().split("\n")
+        self.mapn = []
+        for i in fail:
+            a = "["
+            for j in i:
+                if j == "1":
+                    if randint(0, 100) == 0:
+                        j = randint(2, 3)
+                a += str(j) + ","
+
+            exec("self.mapn.append(%s)" % (a[0:-1] + "]"))
+
+    def narko_generate(self):
+        map1.get_map(self)
+        for i in range(len(self.mapn)):
+            for j in range(len(self.mapn[i])):
+                if self.mapn[i][j] >= 2:
+                    self.narko.append([pygame.Rect(j*self.width, i*self.height, self.width, self.height), self.narcotypes[self.mapn[i][j]][0], self.narcotypes[self.mapn[i][j]][1]])
