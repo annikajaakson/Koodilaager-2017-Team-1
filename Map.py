@@ -38,15 +38,13 @@ class map1:
                 if self.mapn[i][j] == 0:
                     self.walls.append(pygame.Rect((j*width, i*height, width, height)))
                 if self.mapn[i][j] >= 2:
-                    self.narko.append([pygame.Rect(j*width, i*height, width, height), narcotypes[self.mapn[i][j]][1]])
+                    self.narko.append([pygame.Rect(j*width, i*height, width, height), narcotypes[self.mapn[i][j]][0], narcotypes[self.mapn[i][j]][1]])
 
 
     def draw(self, screen):
-        for i in self.narko:
-            pygame.draw.rect(screen, i[1], i[0])
         for i in self.walls:
             pygame.draw.rect(screen, (160, 95, 49), i)
-        return self.walls, self.narko
+        return self.walls
 
     def path_find(self, cop, player):
         grid = Grid(matrix=self.mapn)
