@@ -21,8 +21,6 @@ class Player:
 			if hyporect.colliderect(wall):
 				canmove = False
 
-		print(mapobject.walls)
-
 		if canmove:
 			self.x += inputx
 			self.y += inputy

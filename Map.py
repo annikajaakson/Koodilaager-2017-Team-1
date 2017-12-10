@@ -1,5 +1,6 @@
 #Raiko
 import pygame, math
+from random import randint
 from pathfinding.core.diagonal_movement import DiagonalMovement
 from pathfinding.core.grid import Grid
 from pathfinding.finder.a_star import AStarFinder
@@ -33,7 +34,7 @@ for i in fail:
 	   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]'''
 
 class map1:
-	def __init__(self, resolution):
+	def __init__(self, resolution, narcotypes):
 		self.resolution = resolution
 		fail = open("image.txt").read().split("\n")
 		self.mapn = []
@@ -41,8 +42,15 @@ class map1:
 		for i in fail:
 			a = "["
 			for j in i:
+				if j == "0":
+					if randint(0, 3) == 0:
+						rand_index = randint(0, 6)
+						j = narcotypes[rand_index]
 				a += j + ","
+
 			exec("self.mapn.append(%s)" % (a[0:-1] + "]"))
+
+		print(self.mapn)
 
 		self.x = len(self.mapn[1])
 		self.y = len(self.mapn)
