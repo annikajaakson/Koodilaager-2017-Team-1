@@ -5,40 +5,12 @@ from pathfinding.core.diagonal_movement import DiagonalMovement
 from pathfinding.core.grid import Grid
 from pathfinding.finder.a_star import AStarFinder
 
-
-"""fail = open("image.txt").read().split("\n")
-mapn = []
-for i in fail:
-	a = "["
-	for j in i:
-		a += j + ","
-	exec("mapn.append(%s)"%(a[0:-1] + "]"))"""
-
-'''mapn = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	   [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-	   [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-	   [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-	   [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-	   [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-	   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]'''
-
 class map1:
 	def __init__(self, resolution, narcotypes):
 		self.resolution = resolution
-		fail = open("image.txt").read().split("\n")
 		self.mapn = []
 
+		fail = open("image.txt").read().split("\n")
 		for i in fail:
 			a = "["
 			for j in i:
@@ -50,12 +22,11 @@ class map1:
 
 			exec("self.mapn.append(%s)" % (a[0:-1] + "]"))
 
-		print(self.mapn)
-
 		self.x = len(self.mapn[1])
 		self.y = len(self.mapn)
 		width = self.resolution[0] / self.x
 		height = self.resolution[1] / self.y
+		
 		self.walls = []
 		self.outer_walls = [pygame.Rect([0, -200, self.resolution[0], 200]),
 					  pygame.Rect([0, self.resolution[1], self.resolution[0], 200]),
@@ -72,13 +43,12 @@ class map1:
 			pygame.draw.rect(screen, (160, 95, 49), i)
 		return self.walls
 
-
-	def path_find(self, cop, player, mapm):
-		grid = Grid(matrix=mapm)
+	def path_find(self, cop, player):
+		grid = Grid(matrix=self.mapn)
 
 		start = grid.node(cop[0], cop[1])
 		end = grid.node(player[0], player[1])
 
-		path, runs = AStarFinder(diagonal_movement=DiagonalMovement.always).find_path(start, end, grid)	
+		path, runs = AStarFinder(diagonal_movement=DiagonalMovement.never).find_path(start, end, grid)	
 		return path	
 

@@ -44,11 +44,9 @@ while True:
 	if clicked == True:
 		screen.fill((255, 255, 255))
 		walls = map1.draw(screen)
-		player_Pos = player.move(-Keys[pygame.K_LEFT]+Keys[pygame.K_RIGHT], Keys[pygame.K_DOWN]-Keys[pygame.K_UP],map1)
+		player_Pos = player.move(Keys[pygame.K_RIGHT]-Keys[pygame.K_LEFT], Keys[pygame.K_DOWN]-Keys[pygame.K_UP],map1)
 		player.draw(screen, player_Pos)
-		cop.draw(screen, map1.path_find(cop.pos(), player_Pos, map1.mapn))
-
-	#Code here xd 1 876
+		cop.draw(screen, map1.path_find(cop.pos(), player_Pos))
 
 	pygame.time.wait(20)
 	pygame.display.update()
