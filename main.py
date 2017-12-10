@@ -10,7 +10,7 @@ score = 0
 
 map1 = Map.map1(resolution, narcotypes)
 cops_list = []
-player = Player.Player(1, 1, resolution, map1.mapn)
+player = Player.Player(map1.x-2, map1.y-2, resolution, map1.mapn)
 narko = Narko.Narko(map1.narko)
 
 # update the locations of objects on the screen
@@ -31,6 +31,10 @@ def draw(screen):
 
     for cop in cops_list:
         cop.draw(screen)
+        score -= cop.get_score()
+
+    if score < 0:
+        screen.blit(pygame.font.SysFont("comicsansms", 200).render("BUSTED", 1, (0,0,0)), (100, 200))
 
     if len(narko.narko) == 0:
         map1.narko_generate()
@@ -77,7 +81,7 @@ if __name__ == "__main__":
             if leftclick == (1, 0, 0) and 900 > mouse[0] > 500 and 750 > mouse[1] > 600:
                 clicked = True
 
-        if clicked:
+        if clicked and not score < 0:
             update(delta)
             draw(screen)
 

@@ -18,8 +18,8 @@ class Player:
         self.height = self.resolution[1] / len(self.mapn)
 
         # data about the characters rotation
-        self.roty = 1  # 1 - right, -1 - left, 0 - neither
-        self.rotx = 2  # 2 - down, -2 - up, 0 - neither
+        self.roty = 0  # 1 - right, -1 - left, 0 - neither
+        self.rotx = 1  # 2 - down, -2 - up, 0 - neither
         self.last = 1  # rotation during the last frame
 
         self.move_timer = 0  # the player can move only once the timer has reached the cooldown
@@ -34,8 +34,10 @@ class Player:
     def draw(self, screen):
         if self.rotx:
             screen.blit(rotation[self.rotx], (self.x * self.width - 20, self.y * self.height))
+            self.last = self.rotx 
         elif self.roty:
-            screen.blit(rotation[self.roty], (self.x * self.width - 20, self.y * self.height))
+            screen.blit(rotation[self.roty*2], (self.x * self.width - 20, self.y * self.height))
+            self.last = self.roty*2
         else:
             screen.blit(rotation[self.last], (self.x * self.width - 20, self.y * self.height))
 
@@ -48,13 +50,6 @@ class Player:
         for wall in mapobject.outer_walls:
             if hyporect.colliderect(wall):
                 canmove = False
-
-        if self.rotx:
-            self.last = self.rotx
-        elif self.roty:
-            self.last = self.roty
-        else:
-            self.last = 1
 
         self.rotx = inputx
         self.roty = inputy
