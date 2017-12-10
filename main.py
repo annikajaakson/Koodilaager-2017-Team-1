@@ -6,9 +6,9 @@ resolution = [1400, 900]
 fps_cap = 30
 clicked = False
 narcotypes = {2:['LSD', (255, 255, 0)], 3:['Mushroom', (0, 255, 255)]}
-
+score = 0
 map1 = Map.map1(resolution, narcotypes)
-cops_list = [Cop.Cop(1, 1, resolution, map1.mapn)]
+cops_list = []
 player = Player.Player(1, 1, resolution, map1.mapn)
 narko = Narko.Narko(map1.narko)
 
@@ -24,19 +24,27 @@ def update(delta):
 
 # draw everything on the screen
 def draw(screen):
+    global score
     screen.fill((255, 255, 255))
     map1.draw(screen)
 
     for cop in cops_list:
         cop.draw(screen)
 
+    if len(narko.narko) == 0:
+        map1.narko_generate()
+        cops_list.append(Cop.Cop(1, 1, resolution, map1.mapn))
+
     player.draw(screen)
-    narko.draw(screen, player.rect())
+    score += narko.draw(screen, player.rect())
+    screen.blit(font.render("Score: %s" % score, 1, (255,255,255)), (10, 10))
+
 
 if __name__ == "__main__":
     pygame.init()
     image = pygame.image.load('Narkokorjaja.png')
     screen = pygame.display.set_mode(resolution)
+    font = pygame.font.SysFont("comicsansms", 40)
 
     clock = pygame.time.Clock()
     delta = clock.tick()

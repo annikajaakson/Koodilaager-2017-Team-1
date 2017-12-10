@@ -14,6 +14,7 @@ class Narko:
                 b = self.narko[i]
                 del self.narko[i]
                 return Narko.NarkoSpecial(self, b[1])
+        return 0
 
     def NarkoSpecial(self, Mode):
         #1 -> kanep     3 -> speed      5 -> LSD        7 -> Ecstasy
