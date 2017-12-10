@@ -60,8 +60,7 @@ class map1:
 		self.outer_walls = [pygame.Rect([0, -200, self.resolution[0], 200]),
 					  pygame.Rect([0, self.resolution[1], self.resolution[0], 200]),
 					  pygame.Rect([self.resolution[0], 0, 200, self.resolution[1]]),
-					  pygame.Rect([-200, 0, 200, resolution[1]])
-					  ]
+					  pygame.Rect([-200, 0, 200, resolution[1]])]
 
 		for i in range(len(self.mapn)):
 			for j in range(len(self.mapn[i])):
@@ -80,6 +79,6 @@ class map1:
 		start = grid.node(cop[0], cop[1])
 		end = grid.node(player[0], player[1])
 
-		path, runs = AStarFinder().find_path(start, end, grid)	
+		path, runs = AStarFinder(diagonal_movement=DiagonalMovement.always).find_path(start, end, grid)	
 		return path	
 
