@@ -1,6 +1,7 @@
 #Jako
 import pygame
 
+cop_img = pygame.image.load("copdown.png")
 class Cop:
     def __init__(self, x, y, resolution, map):
         self.x = x
@@ -8,10 +9,14 @@ class Cop:
         self.resolution = resolution
         self.map = map
         self.mapn = map.mapn
+        self.score = 0
         self.width = self.resolution[0] / len(self.mapn[0])
         self.height = self.resolution[1] / len(self.mapn)
         self.move_timer = 0  # the cop can move only once the timer has reached the cooldown
         self.move_cooldown = 100  # time between steps in milliseconds
+
+        self.attack_timer = 0  # the cop can move only once the timer has reached the cooldown
+        self.attack_cooldown = 1000  #
 
         self.rect = pygame.Rect(self.x * self.width,
                                 self.y * self.height,
@@ -25,6 +30,15 @@ class Cop:
 
     def update(self, delta, path):
         self.move_timer += delta
+        self.attack_timer += delta
+
+        self.score = 0
+        if 2 >= len(path):
+            if self.attack_timer >= self.attack_cooldown:
+                self.score = 100
+                self.attack_timer = 0
+        else:
+            self.score = 0
 
         if self.move_timer >= self.move_cooldown:
             # if there is a next tile to move to, move to that tile
@@ -55,4 +69,7 @@ class Cop:
 
     def draw(self, screen):
         color = (0, 255, 0)
-        pygame.draw.rect(screen, color, self.rect)
+        screen.blit(cop_img, (self.rect[0], self.rect[1]))
+
+    def get_score(self):
+        return self.score
