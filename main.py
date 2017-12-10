@@ -8,8 +8,9 @@ image = pygame.image.load('Narkokorjaja.png')
 screen = pygame.display.set_mode(resolution)
 
 clicked = False
+narcotypes = ['2', '3', '4', '5', '6', '7', '8']
 
-map1 = Map.map1(resolution)
+map1 = Map.map1(resolution, narcotypes)
 cop = Cop.Cop(1, 1, resolution, map1.mapn)
 player = Player.Player(1, 1, resolution, map1.mapn)
 
@@ -43,11 +44,9 @@ while True:
 	if clicked == True:
 		screen.fill((255, 255, 255))
 		walls = map1.draw(screen)
-		player_Pos = player.move(-Keys[pygame.K_LEFT]+Keys[pygame.K_RIGHT], Keys[pygame.K_DOWN]-Keys[pygame.K_UP],map1)
+		player_Pos = player.move(Keys[pygame.K_RIGHT]-Keys[pygame.K_LEFT], Keys[pygame.K_DOWN]-Keys[pygame.K_UP],map1)
 		player.draw(screen, player_Pos)
-		cop.draw(screen, map1.path_find(cop.pos(), player_Pos, map1.mapn))
-
-	#Code here xd 1 876
+		cop.draw(screen, map1.path_find(cop.pos(), player_Pos))
 
 	pygame.time.wait(20)
 	pygame.display.update()
