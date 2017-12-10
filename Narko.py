@@ -14,6 +14,8 @@ class Narko:
     def draw(self, screen):
         pygame.draw.rect(screen, (255, 0, 0), (self.xPos, self.yPos, 100, 100))
 
+    def
+
     def NarkoSpecial(self, Mode):
         #1 -> kanep     3 -> speed      5 -> LSD        7 -> Ecstasy
         #2 -> liim      4 -> cocaine    6 -> Shrooms

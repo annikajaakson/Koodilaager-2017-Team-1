@@ -26,4 +26,3 @@ class Player:
 			self.y += inputy
 		return [self.x, self.y]
 
-
