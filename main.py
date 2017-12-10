@@ -1,6 +1,6 @@
 # Mingi Pede aka Mihkel
 import pygame, time, sys, math
-import Player, Map, Cop
+import Player, Map, Cop, Narko
 
 resolution = [1400, 900]
 fps_cap = 30
@@ -10,7 +10,7 @@ narcotypes = {2:['LSD', (255, 255, 0)], 3:['Mushroom', (0, 255, 255)]}
 map1 = Map.map1(resolution, narcotypes)
 cops_list = [Cop.Cop(1, 1, resolution, map1.mapn)]
 player = Player.Player(1, 1, resolution, map1.mapn)
-
+narko = Narko.Narko(map1.narko)
 
 # update the locations of objects on the screen
 def update(delta):
@@ -31,7 +31,7 @@ def draw(screen):
         cop.draw(screen)
 
     player.draw(screen)
-
+    narko.draw(screen, player.rect())
 
 if __name__ == "__main__":
     pygame.init()

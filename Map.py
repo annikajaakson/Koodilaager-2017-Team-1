@@ -54,4 +54,3 @@ class map1:
 
         path, runs = AStarFinder(diagonal_movement=DiagonalMovement.never).find_path(start, end, grid)  
         return path 
-

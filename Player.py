@@ -28,6 +28,9 @@ class Player:
     def pos(self):
         return [self.x, self.y]
 
+    def rect(self):
+        return pygame.Rect([self.x * self.width, self.y * self.height, self.width, self.height])
+
     def draw(self, screen):
         if self.rotx:
             screen.blit(rotation[self.rotx], (self.x * self.width - 20, self.y * self.height))
