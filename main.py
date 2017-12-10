@@ -8,7 +8,7 @@ image = pygame.image.load('Narkokorjaja.png')
 screen = pygame.display.set_mode(resolution)
 
 clicked = False
-narcotypes = ['2', '3', '4', '5', '6', '7', '8']
+narcotypes = {2:['LSD', (255, 255, 0)], 3:['Mushroom', (0, 255, 255)]}
 
 map1 = Map.map1(resolution, narcotypes)
 cop = Cop.Cop(1, 1, resolution, map1.mapn)
