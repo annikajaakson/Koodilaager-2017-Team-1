@@ -12,13 +12,13 @@ class Narko:
 
     def draw(self, screen, player):
         for i in range(len(self.narko)):
-            #pygame.draw.rect(screen, self.narko[i][2], self.narko[i][0])
-            if self.narko[i][1] == "Mushroom":
+            if self.narko[i][1] == "mushroom":
                 screen.blit(seen, (self.narko[i][0][0]-1, self.narko[i][0][1]+15))
-            elif self.narko[i][1] == "Weed":
+            elif self.narko[i][1] == "weed":
                 screen.blit(weed, (self.narko[i][0][0]-1, self.narko[i][0][1]+15))
-            elif self.narko[i][1] == "Syringe":
+            elif self.narko[i][1] == "syringe":
                 screen.blit(syringe, (self.narko[i][0][0]-1, self.narko[i][0][1]+15))
+
         for i in range(len(self.narko)):
             if self.narko[i][0].colliderect(player):
                 b = self.narko[i]
@@ -27,13 +27,11 @@ class Narko:
         return 0
 
     def NarkoSpecial(self, Mode):
-        #1 -> kanep     3 -> speed      5 -> LSD        7 -> Ecstasy
-        #2 -> liim      4 -> cocaine    6 -> Shrooms
-        if Mode == "Weed":
+        if Mode == "weed":
             return 50
-        elif Mode == "Mushroom":
+        elif Mode == "mushroom":
             return 100
-        elif Mode == "Syringe":
+        elif Mode == "syringe":
             return 150
 
 

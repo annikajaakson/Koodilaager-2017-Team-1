@@ -33,13 +33,13 @@ class Player:
 
     def draw(self, screen):
         if self.rotx:
-            screen.blit(rotation[self.rotx], (self.x * self.width - 20, self.y * self.height))
+            screen.blit(rotation[self.rotx], (self.x * self.width - 20, self.y * self.height-5))
             self.last = self.rotx 
         elif self.roty:
-            screen.blit(rotation[self.roty*2], (self.x * self.width - 20, self.y * self.height))
+            screen.blit(rotation[self.roty*2], (self.x * self.width - 20, self.y * self.height-5))
             self.last = self.roty*2
         else:
-            screen.blit(rotation[self.last], (self.x * self.width - 20, self.y * self.height))
+            screen.blit(rotation[self.last], (self.x * self.width - 20, self.y * self.height-5))
 
     def move(self, inputx, inputy, mapobject, delta):
         canmove = True

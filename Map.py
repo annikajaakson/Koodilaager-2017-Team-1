@@ -46,10 +46,8 @@ class map1:
 
     def random_pos(self):
         pos = [randint(0, self.x-1), randint(0, self.y-1)]
-
         while self.mapn[pos[1]][pos[0]] == 0:
             pos = [randint(0, self.x-1), randint(0, self.y-1)]
-
         return pos
 
     def get_map(self):
@@ -70,4 +68,4 @@ class map1:
         for i in range(len(self.mapn)):
             for j in range(len(self.mapn[i])):
                 if self.mapn[i][j] >= 2:
-                    self.narko.append([pygame.Rect(j*self.width, i*self.height, self.width, self.height), self.narcotypes[self.mapn[i][j]][0], self.narcotypes[self.mapn[i][j]][1]])
+                    self.narko.append([pygame.Rect(j*self.width, i*self.height, self.width, self.height), self.narcotypes[self.mapn[i][j]]])

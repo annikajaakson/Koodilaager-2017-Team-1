@@ -2,6 +2,7 @@
 import pygame
 
 cop_img = pygame.image.load("copdown1.png")
+
 class Cop:
     def __init__(self, x, y, resolution, map):
         self.x = x
@@ -69,7 +70,7 @@ class Cop:
 
     def draw(self, screen):
         color = (0, 255, 0)
-        screen.blit(cop_img, (self.rect[0], self.rect[1]))
+        screen.blit(cop_img, (self.rect[0]-10, self.rect[1]-10))
 
     def get_score(self):
         return self.score

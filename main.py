@@ -2,10 +2,10 @@
 import pygame, time, sys, math
 import Player, Map, Cop, Narko
 
-resolution = [1400, 900]
+resolution = [1300, 720]
 fps_cap = 30
 clicked = False
-narcotypes = {2:['Weed', (255, 255, 0)], 3:['Mushroom', (0, 255, 255)], 4:['Syringe', (255, 255, 0)]}
+narcotypes = {2:'weed', 3:'mushroom', 4:'syringe'}
 score = 0
 
 map1 = Map.map1(resolution, narcotypes)
@@ -72,13 +72,13 @@ if __name__ == "__main__":
             screen.blit(image, (282, 120))
             mouse = pygame.mouse.get_pos()
 
-            if 900 > mouse[0] > 500 and 750 > mouse[1] > 600:
-                pygame.draw.rect(screen, [0, 255, 0], (500, 600, 400, 150))
+            if 900 > mouse[0] > 400 and 750 > mouse[1] > 500:
+                pygame.draw.rect(screen, [0, 255, 0], (400, 500, 400, 150))
             else:
-                pygame.draw.rect(screen, [0, 200, 0], (500, 600, 400, 150))
+                pygame.draw.rect(screen, [0, 200, 0], (400, 500, 400, 150))
             leftclick = pygame.mouse.get_pressed()
 
-            if leftclick == (1, 0, 0) and 900 > mouse[0] > 500 and 750 > mouse[1] > 600:
+            if leftclick == (1, 0, 0) and 900 > mouse[0] > 400 and 750 > mouse[1] > 500:
                 clicked = True
 
         if clicked and not score < 0:
