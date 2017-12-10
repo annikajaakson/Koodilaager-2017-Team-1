@@ -16,11 +16,11 @@ def build_nodes(width, height, matrix=None):
     for y in range(height):
         nodes[y] = [None] * width
         for x in range(width):
-            walkable = True
+            walkable = False
             # 0, False, None will be walkable
             # while others will be un-walkable
             if matrix and matrix[y][x]:
-                walkable = False
+                walkable = True
             nodes[y][x] = Node(x, y, walkable)
     return nodes
 

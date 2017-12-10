@@ -65,7 +65,7 @@ class map1:
 
 		for i in range(len(self.mapn)):
 			for j in range(len(self.mapn[i])):
-				if self.mapn[i][j] == 1:
+				if self.mapn[i][j] == 0:
 					self.walls.append(pygame.Rect((j*width, i*height, self.resolution[0]/self.x, self.resolution[1]/self.y)))
 
 	def draw(self, screen):
