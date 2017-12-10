@@ -45,7 +45,7 @@ while True:
 		screen.fill((255, 255, 255))
 		walls = map1.draw(screen)
 		player_Pos = player.move(Keys[pygame.K_RIGHT]-Keys[pygame.K_LEFT], Keys[pygame.K_DOWN]-Keys[pygame.K_UP],map1)
-		player.draw(screen, player_Pos)
+		player.draw(screen, player_Pos, Keys[pygame.K_RIGHT]-Keys[pygame.K_LEFT], Keys[pygame.K_DOWN]-Keys[pygame.K_UP])
 		cop.draw(screen, map1.path_find(cop.pos(), player_Pos))
 
 	pygame.time.wait(20)
